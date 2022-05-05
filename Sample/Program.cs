@@ -40,12 +40,12 @@ namespace Sample
                 Dictionary<String, Object> content = response.getContent();
                 if (content != null && content.ContainsKey("response"))
                 {
-                    Dictionary<String, Object> objResponse = (Dictionary<String, Object>)content["response"];
+                    Dictionary<String, Object> objResponse = Utility.ToDictionary(content["response"]);
                     if (objResponse.ContainsKey("code"))
                     {
                         object code = -1;
                         objResponse.TryGetValue("code", out code);
-                        System.Console.WriteLine("Status: {0}", (int)code == 0 ? "Success" : "Failed");
+                        System.Console.WriteLine("Status: {0}", (long)code == 0 ? "Success" : "Failed");
                         System.Console.WriteLine("RequestID: {0}", objResponse.ContainsKey("request_id") ? objResponse["request_id"] : "null");
                         System.Console.WriteLine("ResponseID: {0}", objResponse.ContainsKey("response_id") ? objResponse["response_id"] : "null");
                         System.Console.WriteLine("Description: {0}", objResponse.ContainsKey("description") ? objResponse["description"] : "null");

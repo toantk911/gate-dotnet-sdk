@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using vn.gate.sdk.exception;
+using vn.gate.sdk.utils;
 
 namespace vn.gate.sdk.http
 {
@@ -204,8 +205,8 @@ namespace vn.gate.sdk.http
             }
             if (response_content.ContainsKey("error"))
             {
-                Dictionary<String, Object> error = (Dictionary<String, Object>)response_content["error"];
-                throw (new RequestException(error["message"].ToString()).setError(response_content));
+                Dictionary<String, Object> error = Utility.ToDictionary(response_content["error"]);
+                throw (new RequestException($"{error["code"]}-{error["message"]}").setError(response_content));
             }
 
             return response;

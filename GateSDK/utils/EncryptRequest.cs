@@ -37,8 +37,6 @@ namespace vn.gate.sdk.utils
             }
             String decodeText = Uri.EscapeDataString(this.encodeRawPlainText);
             String decodeJson = TripleDES.Decrypt(decodeText, this.getSession().getAppSecret());
-
-            Dictionary<String, Object> clas = new Dictionary<String, Object>();
             this.payload = (Dictionary<String, Object>)JsonConvert.DeserializeObject<Dictionary<String, Object>>(decodeJson);
         }
 

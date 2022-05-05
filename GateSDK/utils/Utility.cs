@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace vn.gate.sdk.utils
 {
@@ -138,6 +139,15 @@ namespace vn.gate.sdk.utils
                 intranetIp = "127.0.0.1";
             }
             return intranetIp;
+        }
+
+        public static Dictionary<String, Object> ToDictionary(Object obj)
+        {
+            if (obj is JObject)
+            {
+                return ((JObject)obj).ToObject<Dictionary<String, Object>>();
+            }
+            return (Dictionary<String, Object>)obj;
         }
     }
 }
