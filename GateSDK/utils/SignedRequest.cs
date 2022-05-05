@@ -27,11 +27,10 @@ namespace vn.gate.sdk.utils
             
             try
             {
-                SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
                 X509Certificate2 x509Cert = new X509Certificate2(KEY_PATH, KEY_PASS, X509KeyStorageFlags.MachineKeySet);
-                RSACryptoServiceProvider rsaCryptoIPT = (RSACryptoServiceProvider)x509Cert.PrivateKey;
+                RSA rsaCryptoIPT = (RSA)x509Cert.PrivateKey;
                 Byte[] data = UTF8Encoding.UTF8.GetBytes(payload);
-                return Convert.ToBase64String(rsaCryptoIPT.SignData(data, sha1));
+                return Convert.ToBase64String(rsaCryptoIPT.SignData(data, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1));
             }
             catch (Exception ex)
             {
