@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>vn.gate.sdk</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="exception\" />
+    <None Remove="http\" />
+    <None Remove="http.values\" />
+    <None Remove="sdk\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="http.fields\" />
+    <None Remove="utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="exception\" />
+    <Folder Include="http\" />
+    <Folder Include="http.values\" />
+    <Folder Include="sdk\" />
+    <Folder Include="http.fields\" />
+    <Folder Include="utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+</Project>
